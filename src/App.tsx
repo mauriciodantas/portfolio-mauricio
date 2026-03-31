@@ -13,11 +13,13 @@ import { Experience } from './components/Experience';
 import { Education } from './components/Education';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { PixelBackground } from './components/PixelBackground';
 
 export default function App() {
   return (
     <LanguageProvider>
       <div className="relative scanlines">
+        <PixelBackground />
         <Navbar />
         <main>
           <Hero />

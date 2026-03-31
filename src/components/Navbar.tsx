@@ -5,6 +5,7 @@ import { cn } from '../lib/utils';
 export function Navbar() {
   const { lang, setLang, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -21,6 +22,26 @@ export function Navbar() {
     { href: '#contact', label: t('Contato', 'Contact') },
   ];
 
+  useEffect(() => {
+    const sectionIds = navLinks.map(l => l.href.replace('#', ''));
+
+    const updateActive = () => {
+      const scrollY = window.scrollY + window.innerHeight * 0.25;
+      let current = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+    return () => window.removeEventListener('scroll', updateActive);
+  }, []);
+
   return (
     <nav className={cn(
       "fixed top-0 w-full z-50 px-8 py-5 flex justify-between items-center transition-all duration-300",
@@ -33,9 +54,14 @@ export function Navbar() {
       <ul className="hidden md:flex gap-10 items-center list-none">
         {navLinks.map(link => (
           <li key={link.href}>
-            <a 
-              href={link.href} 
-              className="text-text-secondary hover:text-accent-green text-[10px] font-bold tracking-[0.2em] transition-colors uppercase font-mono"
+            <a
+              href={link.href}
+              className={cn(
+                "text-[10px] font-bold tracking-[0.2em] transition-colors uppercase font-mono",
+                activeSection === link.href.replace('#', '')
+                  ? "text-accent-green"
+                  : "text-text-secondary hover:text-accent-green"
+              )}
             >
               {link.label}
             </a>

@@ -120,10 +120,10 @@ export function Experience() {
                     {t('>> EQUIPAMENTO & SKILLS', '>> EQUIPMENT & SKILLS')}
                   </div>
                   <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
-                    {exp.tech.map(t => (
-                      <li key={t} className="flex items-center gap-3 text-[10px] text-zinc-400 font-mono">
+                    {exp.tech.map(skill => (
+                      <li key={skill} className="flex items-center gap-3 text-[10px] text-zinc-400 font-mono">
                         <div className="w-1.5 h-1.5 bg-zinc-800 group-hover:bg-accent-green transition-colors" />
-                        {t}
+                        {skill}
                       </li>
                     ))}
                   </ul>
