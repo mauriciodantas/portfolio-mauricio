@@ -6,6 +6,7 @@ const phrases_pt = [
   'Especialista em Java',
   'Integrador de Sistemas Brasileiros',
   '🖖 Apaixonado por código',
+  '🤖 Entusiasta de Machine Learning',
 ];
 
 const phrases_en = [
@@ -13,6 +14,7 @@ const phrases_en = [
   'Java Specialist',
   'Brazilian Systems Integrator',
   '🖖 Passionate about code',
+  '🤖 Machine Learning Enthusiast',
 ];
 
 export function TypingEffect() {

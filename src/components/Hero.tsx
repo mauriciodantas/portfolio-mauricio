@@ -53,8 +53,8 @@ export function Hero() {
           className="text-lg text-zinc-400 max-w-xl mx-auto mb-12 leading-relaxed font-light"
         >
           {t(
-            'Especialista em Java com mais de 13 anos de experiência em sistemas críticos e integrações complexas. Colaborador em soluções adotadas por centenas de empresas no Brasil.',
-            'Java Specialist with over 13 years of experience in critical systems and complex integrations. Collaborator in solutions adopted by hundreds of companies in Brazil.'
+            'Especialista em Java com mais de 13 anos de experiência em sistemas críticos e integrações complexas. Em constante evolução.',
+            'Java Specialist with over 13 years of experience in critical systems and complex integrations. Continuously evolving.'
           )}
         </motion.p>
 

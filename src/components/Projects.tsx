@@ -26,7 +26,7 @@ export function Projects() {
       id: 'nfe',
       icon: '🧾',
       name: 'wmixvideo/nfe',
-      role: t('Colaborador Principal', 'Lead Contributor'),
+      role: t('Colaborador', 'Contributor'),
       desc: t(
         'Biblioteca Java para emissão de Nota Fiscal Eletrônica (NF-e) no Brasil. A mais popular do GitHub. Suporta todos os modelos de NFe, NFCe, NFSe e MDF-e.',
         'Java library for issuing Electronic Invoices (NF-e) in Brazil. The most popular on GitHub. Supports all NF-e, NFC-e, NFS-e and MDF-e models.'
@@ -36,17 +36,29 @@ export function Projects() {
       url: 'https://github.com/wmixvideo/nfe',
       featured: true
     },
-    {
-      id: 'slack',
-      icon: '💬',
-      name: 'wmixvideo/slack',
-      role: t('Integração API', 'API Integration'),
+     {
+      id: 'poi-fluent',
+      icon: '📄',
+      name: 'wmixlabs/poi-fluent',
+      role: t('Colaborador Principal', 'Lead Contributor'),
       desc: t(
-        'Wrapper Java para a API do Slack. Facilita o envio de notificações e integração com canais do Slack em aplicações Java.',
-        'Java wrapper for the Slack API. Simplifies sending notifications and integrating with Slack channels in Java applications.'
+        'Extensão fluente para o Apache POI que simplifica a manipulação de documentos Microsoft Office em Java através de uma API encadeável e expressiva.',
+        'Fluent extension for Apache POI that simplifies Microsoft Office document manipulation in Java through a chainable and expressive API.'
       ),
       lang: 'Java',
-      url: 'https://github.com/wmixvideo/slack'
+      url: 'https://github.com/wmixlabs/poi-fluent'
+    },
+    {
+      id: 'cotacao',
+      icon: '💱',
+      name: 'wmixvideo/cotacao',
+      role: t('Colaborador', 'Contributor'),
+      desc: t(
+        'Biblioteca Java para consulta de cotações de moedas e índices financeiros (SELIC, IGPM, Dólar, Euro) diretamente do Banco Central do Brasil.',
+        'Java library for querying currency exchange rates and financial indices (SELIC, IGPM, Dollar, Euro) directly from Brazil\'s Central Bank.'
+      ),
+      lang: 'Java',
+      url: 'https://github.com/wmixvideo/cotacao'
     }
   ];
 

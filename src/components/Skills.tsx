@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
-import { Coffee, Receipt, Globe, Smartphone } from 'lucide-react';
+import { Coffee, Receipt, Globe, Smartphone, Brain } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 export function Skills() {
@@ -19,8 +19,8 @@ export function Skills() {
       icon: <Receipt />,
       name: t('Integrações Brasileiras', 'Brazilian Integrations'),
       color: 'blue',
-      skills: ['NF-e / NFS-e', 'Correios', 'Banco Central', 'Bradesco Boleto', 'DANFE', 'XML Fiscal'],
-      primary: ['NF-e / NFS-e']
+      skills: ['NF-e / NFS-e', 'Banco Central (CNAB)', 'Correios', 'Bradesco Boleto', 'DANFE', 'XML Fiscal'],
+      primary: ['NF-e / NFS-e', 'Banco Central (CNAB)']
     },
     {
       icon: <Globe />,
@@ -33,8 +33,15 @@ export function Skills() {
       icon: <Smartphone />,
       name: t('Mobile & Outros', 'Mobile & Others'),
       color: 'purple',
-      skills: ['Objective-C', 'iOS', 'Xcode', 'Git', 'GitHub', 'Linux', 'Docker'],
-      primary: ['Objective-C']
+      skills: ['iOS', 'Android', 'Objective-C', 'Xcode', 'Git', 'GitHub', 'Linux', 'Docker'],
+      primary: ['iOS', 'Android']
+    },
+    {
+      icon: <Brain />,
+      name: t('IA & Machine Learning', 'AI & Machine Learning'),
+      color: 'pink',
+      skills: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Regressão Linear', 'Classificação', 'Clustering (K-Means)', 'Power BI'],
+      primary: ['Scikit-learn', 'Python']
     }
   ];
 

@@ -41,8 +41,14 @@ export function About() {
               </p>
               <p>
                 {t(
-                  'Atuei como colaborador técnico em projetos de grande escala, como a biblioteca nfe, a solução open-source mais popular do GitHub para Nota Fiscal Eletrônica no Brasil. Meu foco é em arquiteturas robustas, integrações complexas e soluções que geram valor real para o negócio.',
-                  "I have acted as a technical collaborator on large-scale projects, such as the nfe library, the most popular open-source solution on GitHub for Brazil's electronic invoice system. My focus is on robust architectures, complex integrations, and solutions that generate real business value."
+                  'Contribuí em projetos open-source relevantes, como a biblioteca nfe para Nota Fiscal Eletrônica no Brasil e o poi-fluent, uma API fluente para manipulação de documentos Office. Meu foco é em arquiteturas robustas, integrações complexas e soluções que geram valor real para o negócio.',
+                  "I have contributed to relevant open-source projects, such as the nfe library for Brazil's electronic invoice system and poi-fluent, a fluent API for Office document manipulation. My focus is on robust architectures, complex integrations, and solutions that generate real business value."
+                )}
+              </p>
+              <p>
+                {t(
+                  'Atualmente, expando meu repertório com estudos em Inteligência Artificial e Machine Learning, explorando como essas tecnologias podem complementar soluções backend e criar produtos mais inteligentes.',
+                  'I am currently expanding my skill set with studies in Artificial Intelligence and Machine Learning, exploring how these technologies can complement backend solutions and enable smarter products.'
                 )}
               </p>
             </div>
