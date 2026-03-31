@@ -14,7 +14,7 @@ export function About() {
     { icon: <Mail size={18} />, label: 'Email', value: <a href="mailto:mauricio@mdantas.net" className="text-accent-blue hover:underline">mauricio@mdantas.net</a> },
   ];
 
-  const badges = ['☕ Java', '🧾 NF-e', '📦 Correios', '🏦 APIs Bancárias', '📱 iOS'];
+  const badges = ['☕ Java', '🧾 NF-e', '🏦 APIs Bancárias', '📱 Mobile', '🤖 Machine Learning'];
 
   return (
     <section id="about" className="bg-bg-primary py-32 px-8">
