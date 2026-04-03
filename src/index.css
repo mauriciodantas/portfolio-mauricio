@@ -353,3 +353,19 @@
     inset 0 0 160px 40px rgba(0, 0, 0, 0.35);
   border-radius: 8px;
 }
+
+/* Mobile: soften the CRT edge vignette so it doesn't eat content */
+@media (max-width: 768px) {
+  .crt-edge {
+    box-shadow:
+      inset 0 0 24px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .crt-overlay::after {
+    background:
+      radial-gradient(ellipse 100% 90% at 50% 50%,
+        transparent 65%,
+        rgba(0, 6, 0, 0.40) 100%),
+      linear-gradient(rgba(0, 255, 65, 0.018), rgba(0, 255, 65, 0.018));
+  }
+}
