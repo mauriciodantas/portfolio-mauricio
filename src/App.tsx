@@ -17,7 +17,13 @@ import { PixelBackground } from './components/PixelBackground';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 
 export default function App() {
-  const isPrivacyPolicy = window.location.pathname === '/privacy-policy';
+  const isPrivacyPolicy = 
+    window.location.pathname === '/privacy-policy' || 
+    window.location.pathname === '/privacy-policy.html' ||
+    window.location.hash === '#privacy-policy' || 
+    window.location.hash === '#/privacy-policy' ||
+    window.location.search.includes('privacy-policy');
+
   return (
     <LanguageProvider>
       {/* Alien Isolation — CRT Monitor Overlays */}
