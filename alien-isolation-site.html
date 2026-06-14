@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Isolation - Retro CRT Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0e27;
+            color: #0f0;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Efeito CRT - Container Principal */
+        .crt-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0e27;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: brightness(0.95);
+        }
+
+        /* Conteúdo da tela */
+        .crt-content {
+            position: relative;
+            width: 95%;
+            height: 95%;
+            background: linear-gradient(
+                180deg,
+                rgba(0, 0, 0, 0.3) 0%,
+                rgba(15, 0, 0, 0.1) 50%,
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            border: 3px solid #1a1f3a;
+            box-shadow:
+                inset 0 0 30px rgba(0, 0, 0, 0.8),
+                0 0 40px rgba(15, 255, 0, 0.1),
+                inset 0 0 20px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: flicker 0.15s infinite;
+        }
+
+        /* Linhas de varredura (scanlines) */
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: scanline-shift 8s linear infinite;
+            z-index: 10;
+        }
+
+        /* Distorção cromática */
+        .chromatic-aberration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(ellipse at 50% 50%, rgba(255, 0, 0, 0.03), transparent 50%);
+            pointer-events: none;
+            z-index: 9;
+            animation: chromatic-shift 0.5s infinite alternate;
+        }
+
+        /* Vinheta */
+        .vignette {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(0, 0, 0, 0.4) 100%
+            );
+            pointer-events: none;
+            z-index: 8;
+        }
+
+        /* Conteúdo interno */
+        .screen-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            overflow-y: auto;
+            z-index: 5;
+            animation: screen-wobble 2s ease-in-out infinite;
+        }
+
+        /* Estilização de texto */
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #0f0;
+            text-shadow:
+                2px 2px 0 #00ff0033,
+                4px 4px 0 #00ff0055;
+            letter-spacing: 3px;
+            animation: glow-pulse 2s ease-in-out infinite;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0;
+            border-bottom: 2px solid #0f0;
+            padding-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            color: #0d0;
+            text-shadow: 0 0 5px #0f0;
+            letter-spacing: 1px;
+        }
+
+        .terminal-text {
+            background: rgba(0, 20, 0, 0.5);
+            border: 1px solid #0f0;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #0f0;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.1);
+        }
+
+        .status-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30px;
+            background: #000;
+            border-top: 2px solid #0f0;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 0.9em;
+            color: #0f0;
+            z-index: 20;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            background: #0f0;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: status-pulse 1s infinite;
+        }
+
+        /* Animações */
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.97;
+                filter: brightness(1.05);
+            }
+        }
+
+        @keyframes scanline-shift {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(10px);
+            }
+        }
+
+        @keyframes chromatic-shift {
+            0% {
+                transform: translateX(-2px);
+            }
+            100% {
+                transform: translateX(2px);
+            }
+        }
+
+        @keyframes screen-wobble {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0.5deg);
+            }
+            50% {
+                transform: translate(-1px, -1px) rotate(-0.5deg);
+            }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                text-shadow:
+                    2px 2px 0 #00ff0033,
+                    4px 4px 0 #00ff0055,
+                    0 0 20px #0f0;
+            }
+            50% {
+                text-shadow:
+                    2px 2px 0 #00ff0033,
+                    4px 4px 0 #00ff0055,
+                    0 0 40px #0f088;
+            }
+        }
+
+        @keyframes status-pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Scrollbar estilizada */
+        .screen-content::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .screen-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .screen-content::-webkit-scrollbar-thumb {
+            background: #0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #0f0;
+        }
+
+        .screen-content::-webkit-scrollbar-thumb:hover {
+            background: #0a0;
+            box-shadow: 0 0 20px #0f0;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            .screen-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-screen">
+        <div class="crt-content">
+            <div class="scanlines"></div>
+            <div class="chromatic-aberration"></div>
+            <div class="vignette"></div>
+
+            <div class="screen-content">
+                <h1>⚠ SISTEMA ISOLADO</h1>
+                <p>Bem-vindo ao ambiente retro-futurista. Este site foi estilizado com efeitos vintage de monitor CRT, inspirado na atmosfera clássica de Alien Isolation.</p>
+
+                <h2>◆ Características Implementadas</h2>
+                <div class="terminal-text">
+                    > SCANLINES: Ativas
+                    > CHROMATIC_ABERRATION: Ativa
+                    > FLICKER_EFFECT: Ativo
+                    > VIGNETTE: Ativa
+                    > WOBBLE_EFFECT: Ativo
+                </div>
+
+                <h2>◆ Personalizações Disponíveis</h2>
+                <p>Você pode ajustar este efeito alterando as variáveis CSS:</p>
+
+                <div class="terminal-text">
+                    /* Intensidade das linhas */
+                    opacity: 0.15; /* 0.05 a 0.3 */
+
+                    /* Cor do glowing */
+                    color: #0f0; /* Verde, âmbar, etc */
+
+                    /* Velocidade do flicker */
+                    animation: flicker 0.15s; /* Aumentar para menos tremor */
+                </div>
+
+                <h2>◆ Efeito de Filme Antigo</h2>
+                <p>O design combina:</p>
+                <ul style="margin-left: 20px; list-style: none;">
+                    <li>✓ Linhas de varredura CRT realistas</li>
+                    <li>✓ Tremor intermitente (flicker)</li>
+                    <li>✓ Distorção cromática sutil</li>
+                    <li>✓ Borda e vinheta escurecida</li>
+                    <li>✓ Movimento lateral suave</li>
+                    <li>✓ Fonte monoespacida (terminal)</li>
+                    <li>✓ Paleta de cores verde/âmbar retro</li>
+                </ul>
+
+                <h2>◆ Dicas de Customização</h2>
+                <p><strong>Para intensificar o efeito:</strong> Aumente a opacity dos scanlines para 0.25-0.3 ou altere a cor para #ff6600 (âmbar).</p>
+                <p><strong>Para suavizar:</strong> Reduza a frequência do flicker alterando 0.15s para 0.3s ou remova o wobble.</p>
+                <p><strong>Para diferentes cores:</strong> Substitua #0f0 por #ff9500 (âmbar) ou #00ffff (ciano).</p>
+
+                <h2>◆ Compatibilidade</h2>
+                <p>Totalmente compatível com navegadores modernos. Funciona em desktop, tablet e mobile com ajustes responsivos automáticos.</p>
+
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div class="status-indicator"></div>
+        <span>SISTEMA OPERACIONAL | LAST UPDATE: 04.03.2026</span>
+    </div>
+</body>
+</html>

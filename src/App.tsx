@@ -14,8 +14,10 @@ import { Education } from './components/Education';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { PixelBackground } from './components/PixelBackground';
+import { PrivacyPolicy } from './components/PrivacyPolicy';
 
 export default function App() {
+  const isPrivacyPolicy = window.location.pathname === '/privacy-policy';
   return (
     <LanguageProvider>
       {/* Alien Isolation — CRT Monitor Overlays */}
@@ -28,17 +30,24 @@ export default function App() {
 
       <div className="relative scanlines">
         <PixelBackground />
-        <Navbar />
-        <main>
-          <Hero />
-          <About />
-          <Experience />
-          <Education />
-          <Skills />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
+        
+        {isPrivacyPolicy ? (
+          <PrivacyPolicy />
+        ) : (
+          <>
+            <Navbar />
+            <main>
+              <Hero />
+              <About />
+              <Experience />
+              <Education />
+              <Skills />
+              <Projects />
+              <Contact />
+            </main>
+            <Footer />
+          </>
+        )}
       </div>
     </LanguageProvider>
   );
