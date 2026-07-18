@@ -4,6 +4,8 @@
 **Evaluator lens:** Senior UX Researcher / Hiring Manager / Tech Recruiter / Portfolio Reviewer.
 **Central question:** Would this portfolio convince someone to schedule an interview with Mauricio Dantas?
 
+> **Positioning note (owner feedback, post-review):** Mauricio has stated that although he worked with banking/fiscal integrations, his experience is broader and he does **not** want that niche to be the focal point. Recommendations below have been revised accordingly: the positioning axis shifts from *"Brazilian fiscal/banking niche specialist"* to *"senior engineer for critical systems and complex integrations across domains"* (finance, logistics, fiscal, insurance, media/e-commerce, mobile, and now AI/ML), with banking/fiscal work presented as one credential among several rather than the headline. The practical consequence: breadth-based positioning competes in a larger pool, so **proof of impact (metrics, case studies from different sectors) becomes even more critical** — versatility is only convincing when each chapter shows depth.
+
 ---
 
 ## Executive Summary
@@ -17,7 +19,7 @@ However, the portfolio currently **under-converts**. It is optimized for being a
 3. **No mobile navigation.** Nav links are `hidden md:flex` with no hamburger fallback (`Navbar.tsx:54`); a phone visitor can only scroll blindly.
 4. **Claims without proof.** "The most popular on GitHub," "used by hundreds of companies" — zero star counts, links to merged PRs, metrics, or testimonials to back them.
 
-The niche positioning is the portfolio's biggest asset and it is underexploited: nothing on the page quantifies what "13+ years in critical systems" produced (volumes processed, invoices issued, integrations shipped, teams led).
+The biggest content gap is proof: nothing on the page quantifies what "13+ years in critical systems" produced (volumes processed, systems modernized, integrations shipped, teams led). With a breadth-based positioning (see note above), this proof gap is the single most important thing to fix — range without depth stories reads as generic.
 
 | Score | Value | Rationale |
 |---|---|---|
@@ -32,7 +34,7 @@ The niche positioning is the portfolio's biggest asset and it is underexploited:
 
 ## Top Strengths
 
-1. **Real differentiation.** Brazilian fiscal/banking integration expertise (NF-e, NFS-e, CNAB, boleto, DANFE) is a scarce, high-value niche. Few portfolios can claim it; this one does, credibly, with matching OSS work (`wmixvideo/nfe`).
+1. **Verifiable, multi-domain track record.** Thirteen years across finance, logistics, fiscal, insurance, and media/e-commerce systems, with hard-to-fake credentials (OSS contributions such as `wmixvideo/nfe`, a shipped iOS game, an AI/ML postgraduate in progress). The banking/fiscal work is one strong chapter in a broader "critical systems, many domains" story — per the owner's direction, breadth and adaptability are the intended differentiators, not the niche itself.
 2. **Coherent, memorable visual identity.** The 8-bit/CRT theme is executed with unusual consistency — pixel corners, scanlines, typing effect, canvas pixel background, Press Start 2P headings. Recruiters see dozens of identical Tailwind portfolios a week; this one is remembered.
 3. **Complete, honest career timeline.** Seven roles from IT trainee (2011) to Senior Development Analyst, each with dates, companies, and tech stacks (`Experience.tsx`). The trainee-to-senior arc reads as authentic, not inflated.
 4. **Bilingual PT/EN with localStorage persistence** (`LanguageContext.tsx`) — signals awareness of both local and international markets.
@@ -141,7 +143,7 @@ The niche positioning is the portfolio's biggest asset and it is underexploited:
 
 ## Phase 5 — Content Evaluation
 
-- **Hero:** Name + typing roles + one-line value prop. The value prop is decent ("13 years, critical systems, complex integrations") but generic-adjacent; "critical systems" is asserted, not evidenced. Stats row is clever but "MICRO" as a stat value is noise — a stat should be a number ("40+ integrations shipped", "10M+ NF-e issued"), not an abbreviation.
+- **Hero:** Name + typing roles + one-line value prop. The value prop is decent ("13 years, critical systems, complex integrations") but generic-adjacent; "critical systems" is asserted, not evidenced. Stats row is clever but "MICRO" as a stat value is noise — a stat should be a number ("40+ integrations shipped", "5 industries served"), not an abbreviation.
 - **Biography (About):** Three tidy paragraphs, warm tone, mentions OSS and AI/ML studies. Best paragraph on the site is the OSS one — it's the only place with named, verifiable artifacts.
 - **Case studies:** **None.** This is the single largest content gap for a 13-year senior. There is not one story of a problem → constraint → decision → outcome anywhere.
 - **Technical projects:** Four cards; three are *contributor* roles on others' repos, one personal (an iOS game with a playable web build — genuinely delightful, and the "PLAY NOW" modal works). No personal backend flagship, which is odd for a backend specialist: the portfolio's strongest role claims (fiscal/banking) have no owned artifact.
@@ -189,11 +191,11 @@ Against current senior/staff engineer portfolio norms (e.g., the pattern set by 
 
 ### Strategic Improvements (1–3 months)
 5. **Decide the primary audience and fork the funnel.** If freelance clients matter: add a plain-language "Services" section (no jargon, WhatsApp contact, "how we work"). If employment is the only goal: cut the ambiguity and optimize purely for recruiters/EMs. Serving neither explicitly currently serves both badly. *(Impact: high; Effort: medium; Confidence: medium.)*
-6. **Publish 2–3 technical articles** on the fiscal/banking niche (NF-e internals, CNAB parsing, POI at scale) and link them from the portfolio. This niche has weak content competition in EN — realistic chance of owning the topic and generating inbound. *(Impact: high, compounding; Effort: high; Confidence: medium.)*
+6. **Publish 2–3 technical articles** demonstrating range across domains — e.g., legacy-system modernization strategy, designing resilient third-party integrations (banking is one example among several), or applying ML to backend problems. Articles are the strongest way to make a breadth-based positioning credible, because each one shows depth in a different area. *(Impact: high, compounding; Effort: high; Confidence: medium.)*
 7. **A "theme intensity" pass:** keep the 8-bit identity for structure and accents, but move body copy to a readable sans (keep mono for labels/code), raise base text contrast, and gate CRT overlays behind reduced-motion/user toggle. Keep the personality, lose the reading tax. *(Impact: medium-high across all personas; Effort: medium; Confidence: high.)*
 
 ### Long-term Enhancements
-8. Build one **owned backend flagship** in the niche (e.g., open-source NF-e validation microservice or a public demo API) so the specialist claim has a personal artifact.
+8. Build one **owned backend flagship** — a personal artifact that demonstrates the "critical systems" claim (e.g., an open-source integration toolkit, a resilience/retry library, or a public demo API). Domain is flexible; what matters is that the backend-specialist claim gets a personal, inspectable artifact.
 9. Conference talks / meetup appearances (the Conference Organizer persona currently has nothing to evaluate); add a "Talks" section when they exist.
 10. Bridge the AI/ML narrative with a shipped artifact (e.g., ML-assisted fiscal document classification demo) — turns "student" into "practitioner."
 
@@ -202,7 +204,7 @@ Against current senior/staff engineer portfolio norms (e.g., the pattern set by 
 - **Weeks 1–2 (repair the funnel):** All Quick Wins above. Ship analytics first so before/after is measurable.
 - **Weeks 3–5 (add proof):** Rewrite experience bullets with metrics; gather 3 LinkedIn recommendations; add real GitHub stats to project cards.
 - **Weeks 6–9 (add depth):** Write and publish the flagship case study; add it as a portfolio section + standalone article. Run the readability/contrast pass.
-- **Weeks 10–13 (differentiate):** Second article (CNAB or POI); decide freelance-vs-employment focus and ship the corresponding section; start the owned flagship project.
+- **Weeks 10–13 (differentiate):** Second article in a different domain than the first (to reinforce range); decide freelance-vs-employment focus and ship the corresponding section; start the owned flagship project.
 
 ## Validation Experiments
 
