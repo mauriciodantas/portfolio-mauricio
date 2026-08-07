@@ -32,7 +32,7 @@ export function Contact() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-20">
           <span className="font-mono text-[10px] text-zinc-500 uppercase tracking-[0.3em] mb-4 block">
-            {t('06. CONTATO', '06. CONTACT')}
+            {t('07. CONTATO', '07. CONTACT')}
           </span>
           <h2 className="text-4xl font-bold tracking-tight">
             {t('Entre em ', 'Get in ')}
