@@ -9,25 +9,34 @@ export function Apps() {
     {
       id: 'datapanel',
       icon: '📊',
-      name: 'Data Panel',
+      name: 'Datapanel',
       packageId: 'net.mdantas.datapanel',
       platform: t('Android', 'Android'),
       desc: t(
-        'Aplicativo Android que reúne informações do dispositivo e de serviços conectados em um painel de leitura rápida, publicado na Google Play.',
-        'Android app that gathers device and connected-service information into a quick-read panel, published on Google Play.'
+        'Transforme sua tela inicial em um painel de controle. Criador de widgets customizados para Android: monte, aplique tema e posicione widgets em segundos, com preview ao vivo — o que você vê é exatamente o que vai para a tela.',
+        'Turn your home screen into a control panel. A custom widget maker that lets you build, theme and place beautiful Android widgets in seconds, with a live preview so what you see is exactly what lands on your screen.'
       ),
+      highlights: [
+        t('SEM BLOAT', 'NO BLOAT'),
+        t('SEM WIDGETS QUEBRADOS', 'NO BROKEN WIDGETS'),
+        t('PERMISSÕES SOB DEMANDA', 'PERMISSIONS ON DEMAND'),
+      ],
       url: 'https://play.google.com/store/apps/details?id=net.mdantas.datapanel',
     },
     {
       id: 'mdwatchfaces',
       icon: '⌚',
-      name: 'MD Watch Faces',
+      name: 'MD Watchfaces',
       packageId: 'net.mdantas.mdwatchfaces',
       platform: t('Wear OS', 'Wear OS'),
       desc: t(
-        'Coleção de watch faces para Wear OS construídas em Watch Face Format (WFF), com complications configuráveis e temas personalizáveis.',
-        'Collection of Wear OS watch faces built with Watch Face Format (WFF), featuring configurable complications and customizable themes.'
+        'O aplicativo companheiro definitivo para quem busca exclusividade, modernidade e tecnologia no pulso. Uma coleção premium de mostradores projetados detalhadamente para relógios com Wear OS.',
+        'The ultimate companion app for users seeking exclusivity, modernity and technology on their wrist. A premium collection of watch faces designed in detail for Wear OS smartwatches.'
       ),
+      highlights: [
+        t('COLEÇÃO PREMIUM', 'PREMIUM COLLECTION'),
+        t('DESIGN DETALHADO', 'DETAILED DESIGN'),
+      ],
       url: 'https://play.google.com/store/apps/details?id=net.mdantas.mdwatchfaces',
     },
   ];
@@ -88,9 +97,20 @@ export function Apps() {
                   {app.packageId}
                 </p>
 
-                <p className="text-[11px] text-zinc-500 leading-relaxed font-mono mb-8">
+                <p className="text-[11px] text-zinc-500 leading-relaxed font-mono mb-6">
                   {app.desc}
                 </p>
+
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {app.highlights.map(highlight => (
+                    <span
+                      key={highlight}
+                      className="font-mono text-[8px] text-zinc-500 bg-zinc-900 px-2 py-1 border border-zinc-800 uppercase tracking-wider"
+                    >
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
 
                 <div className="flex items-center justify-between mt-auto pt-6 border-t-2 border-zinc-900">
                   <div className="flex items-center gap-2 font-mono text-[9px] text-zinc-500 uppercase tracking-widest">
