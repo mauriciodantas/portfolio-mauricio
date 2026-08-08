@@ -19,6 +19,7 @@ export function Navbar() {
     { href: '#education', label: t('Formação', 'Education') },
     { href: '#skills', label: t('Skills', 'Skills') },
     { href: '#projects', label: t('Projetos', 'Projects') },
+    { href: '#apps', label: t('Apps', 'Apps') },
     { href: '#contact', label: t('Contato', 'Contact') },
   ];
 

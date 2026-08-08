@@ -165,39 +165,10 @@
    ALIEN ISOLATION — CRT MONITOR EFFECT
    ============================================================ */
 
-/* Subtle screen-wide brightness flicker, erratic timing */
-@keyframes ai-flicker {
-  0%   { opacity: 1; }
-  4%   { opacity: 0.98; }
-  6%   { opacity: 1; }
-  40%  { opacity: 1; }
-  41%  { opacity: 0.97; }
-  42%  { opacity: 1; }
-  70%  { opacity: 1; }
-  71%  { opacity: 0.96; }
-  72%  { opacity: 1; }
-  100% { opacity: 1; }
-}
-
 /* Scanlines scroll slowly downward like a refresh sweep */
 @keyframes ai-scanlines {
   from { background-position: 0 0; }
   to   { background-position: 0 200px; }
-}
-
-/* Noise grain shifts position rapidly */
-@keyframes ai-noise {
-  0%   { transform: translate(0, 0)      scale(1.06); }
-  10%  { transform: translate(-2%, -3%)  scale(1.06); }
-  20%  { transform: translate(3%,  2%)   scale(1.06); }
-  30%  { transform: translate(-1%,  4%)  scale(1.06); }
-  40%  { transform: translate(2%, -1%)   scale(1.06); }
-  50%  { transform: translate(-3%,  3%)  scale(1.06); }
-  60%  { transform: translate(1%, -2%)   scale(1.06); }
-  70%  { transform: translate(-2%,  1%)  scale(1.06); }
-  80%  { transform: translate(3%, -3%)   scale(1.06); }
-  90%  { transform: translate(-1%,  2%)  scale(1.06); }
-  100% { transform: translate(0, 0)      scale(1.06); }
 }
 
 /* Horizontal interference sweep (the signature AI terminal line) */
@@ -215,21 +186,6 @@
   100% { top: 108%; opacity: 0;   }
 }
 
-/* Random horizontal RGB glitch strip */
-@keyframes ai-hglitch {
-  0%,  88%, 100% { opacity: 0; transform: translateX(0);   }
-  89% { opacity: 1; transform: translateX(-5px); clip-path: inset(25% 0 55% 0); }
-  90% { opacity: 1; transform: translateX( 5px); clip-path: inset(60% 0 15% 0); }
-  91% { opacity: 1; transform: translateX(-2px); clip-path: inset(10% 0 78% 0); }
-  92% { opacity: 0; transform: translateX(0);   }
-}
-
-/* Phosphor afterglow pulse on the green tint */
-@keyframes ai-phosphor {
-  0%,  100% { opacity: 0.018; }
-  50%        { opacity: 0.032; }
-}
-
 /* ── Overlay 1: scanlines + vignette + phosphor tint ── */
 .crt-overlay {
   position: fixed;
@@ -237,7 +193,6 @@
   pointer-events: none;
   z-index: 9999;
   overflow: hidden;
-  animation: ai-flicker 9s ease-in-out infinite;
   border-radius: 6px;
 }
 
@@ -269,10 +224,10 @@
       rgba(0, 6, 0, 0.62) 100%),
     linear-gradient(rgba(0, 255, 65, 0.022), rgba(0, 255, 65, 0.022));
   z-index: 2;
-  animation: ai-phosphor 5s ease-in-out infinite;
+  opacity: 0.025;
 }
 
-/* ── Overlay 2: animated noise/static grain ── */
+/* ── Overlay 2: static noise/grain (no animation — kept still on purpose) ── */
 .crt-noise {
   position: fixed;
   top: -8%;
@@ -281,8 +236,7 @@
   height: 116%;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.045;
-  animation: ai-noise 0.07s steps(1) infinite;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 180px 180px;
   mix-blend-mode: screen;
@@ -326,23 +280,7 @@
   animation-delay: 5s;
 }
 
-/* ── Overlay 4: rare horizontal RGB glitch strip ── */
-.crt-glitch {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9997;
-  background: linear-gradient(
-    transparent 0%,
-    rgba(0, 255, 65, 0.06) 50%,
-    rgba(0, 0, 255, 0.04) 51%,
-    transparent 100%
-  );
-  animation: ai-hglitch 11s steps(1) infinite;
-  animation-delay: 3s;
-}
-
-/* ── Overlay 5: CRT edge shadow to fake screen curvature ── */
+/* ── Overlay 4: CRT edge shadow to fake screen curvature ── */
 .crt-edge {
   position: fixed;
   inset: 0;
@@ -352,6 +290,21 @@
     inset 0 0  80px 20px rgba(0, 0, 0, 0.65),
     inset 0 0 160px 40px rgba(0, 0, 0, 0.35);
   border-radius: 8px;
+}
+
+/* Respect users who ask for less motion: freeze every remaining CRT animation */
+@media (prefers-reduced-motion: reduce) {
+  .crt-overlay::before,
+  .crt-sweep,
+  .crt-sweep-2,
+  .cursor-blink {
+    animation: none;
+  }
+
+  .crt-sweep,
+  .crt-sweep-2 {
+    display: none;
+  }
 }
 
 /* Mobile: soften the CRT edge vignette so it doesn't eat content */

@@ -9,6 +9,7 @@ import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
+import { Apps } from './components/Apps';
 import { Experience } from './components/Experience';
 import { Education } from './components/Education';
 import { Contact } from './components/Contact';
@@ -29,7 +30,6 @@ export default function App() {
       {/* Alien Isolation — CRT Monitor Overlays */}
       <div className="crt-edge" />
       <div className="crt-noise" />
-      <div className="crt-glitch" />
       <div className="crt-sweep" />
       <div className="crt-sweep-2" />
       <div className="crt-overlay" />
@@ -49,6 +49,7 @@ export default function App() {
               <Education />
               <Skills />
               <Projects />
+              <Apps />
               <Contact />
             </main>
             <Footer />
